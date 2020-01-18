@@ -158,13 +158,14 @@ app.post("/", function(req, res){
   const listName = req.body.listTitle;
   console.log(newItem);
 
-  if (listName=="today"){
+  if (listName=="Today"){
   console.log(req.body.newItem);
 const   item = new ItemModel({ItemName: newItem});
   item.save()
   res.redirect("/");
 } else {
 ListModel.findOne({listName: listName}, function (err,foundList){
+
   console.log("in insert");
   console.log(newItem);
   foundList.listItems.push( {ItemName: newItem});
